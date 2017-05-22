@@ -1,4 +1,4 @@
-package com.example.ananya.giveblood;
+package com.example.ananya.giveblood.activity;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -10,6 +10,8 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.Spinner;
+
+import com.example.ananya.giveblood.R;
 
 import java.util.ArrayList;
 import java.util.List;

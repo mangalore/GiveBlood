@@ -1,10 +1,0 @@
-
-Rsquid:S1068"8Remove this unused "userNameFromEditText" private field.(»ºû©üÿÿÿÿ
-Msquid:S1068"8Remove this unused "passwordFromEditText" private field.(á¢Ğ
-qsquid:S1450"WRemove the "userName" field and declare it as a local variable in the relevant methods.(ô±ïºûÿÿÿÿ
-lsquid:S1450"WRemove the "password" field and declare it as a local variable in the relevant methods.(Şœº
-nsquid:S1450"ZRemove the "buttonLogin" field and declare it as a local variable in the relevant methods.(ñ±k
-wsquid:S1450"]Remove the "buttonRegister" field and declare it as a local variable in the relevant methods.(š§•ıÿÿÿÿ
-}squid:S1450"cRemove the "userNameFromEditText" field and declare it as a local variable in the relevant methods.(»ºû©üÿÿÿÿ
-xsquid:S1450"cRemove the "passwordFromEditText" field and declare it as a local variable in the relevant methods.(á¢Ğ
-dsquid:MaximumInheritanceDepth"=This class has 10 parents which is greater than 5 authorized.(²Ú±

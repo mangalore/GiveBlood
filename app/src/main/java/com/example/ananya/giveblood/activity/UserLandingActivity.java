@@ -1,8 +1,10 @@
-package com.example.ananya.giveblood;
+package com.example.ananya.giveblood.activity;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
+
+import com.example.ananya.giveblood.R;
 
 import org.w3c.dom.Text;
 
