@@ -11,7 +11,16 @@ import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.Spinner;
 
+import com.android.volley.Request;
 import com.example.ananya.giveblood.R;
+import com.example.ananya.giveblood.application.GiveBloodApplication;
+import com.example.ananya.giveblood.entities.UserEntity;
+import com.example.ananya.giveblood.service.URLHelper;
+import com.example.ananya.giveblood.service.handler.ResponseHandler;
+import com.example.ananya.giveblood.service.impl.VolleyStringRequest;
+import com.example.ananya.giveblood.util.Utility;
+import com.example.ananya.giveblood.util.VolleyUtils;
+import com.google.gson.Gson;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -105,4 +114,18 @@ public class RegistrationActivity extends AppCompatActivity {
 //        emailFromEditText = email.getText().toString();
 
     }
+
+//    // Store value in the db
+//    public void saveSettingValue(UserEntity entity, ResponseHandler handler) {
+//        int method;
+//        if (entity.getObjectId() == null || entity.getObjectId().isEmpty()) {
+//            method = Request.Method.POST;
+//        } else {
+//            method = Request.Method.PUT;
+//        }
+//        VolleyStringRequest request = new VolleyStringRequest(method, URLHelper.getAPIEndpoint(Utility.USER_TABLE, entity.getObjectId(),null), handler, handler);
+//        request.setBody(new Gson().toJson(entity));
+//        request.addHeaders(Utility.CONTENT_TYPE, Utility.APPLICATION_JSON);
+//        VolleyUtils.getVolleyUtils(GiveBloodApplication.getContext()).addToRequestQueue(request);
+//    }
 }
