@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">GiveBlood</string>
+    <string name="progress_bar_message">Loading</string>
+    <string name="network_unavailable">This app requires an active internet connection.\nPlease check your network settings and try again</string>
+    <string name="ok_msg">Ok</string>
+    <string name="no_network">The Internet connection appears to be offline</string>
+    <string name="unexpected_error">Unexpected Error happened\\nPlease try again later</string>
 
 </resources>

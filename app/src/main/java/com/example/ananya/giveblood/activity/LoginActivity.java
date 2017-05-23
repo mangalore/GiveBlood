@@ -1,15 +1,15 @@
 package com.example.ananya.giveblood.activity;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
 import com.example.ananya.giveblood.R;
 
-public class MainActivity extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity {
 
     private EditText userName;
     private EditText password;
@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_login);
 
         userName = (EditText) findViewById(R.id.et_username);
         password = (EditText) findViewById(R.id.et_password);
@@ -33,8 +33,8 @@ public class MainActivity extends AppCompatActivity {
         buttonLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this,UserLandingActivity.class);
-                MainActivity.this.startActivity(intent);
+                Intent intent = new Intent(LoginActivity.this, UserLandingActivity.class);
+                LoginActivity.this.startActivity(intent);
             }
         });
 
@@ -42,8 +42,8 @@ public class MainActivity extends AppCompatActivity {
         buttonRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this,RegistrationActivity.class);
-                MainActivity.this.startActivity(intent);
+                Intent intent = new Intent(LoginActivity.this, RegistrationActivity.class);
+                LoginActivity.this.startActivity(intent);
             }
         });
 
