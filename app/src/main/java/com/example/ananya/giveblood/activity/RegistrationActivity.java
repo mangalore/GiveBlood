@@ -62,7 +62,6 @@ public class RegistrationActivity extends AppCompatActivity {
         phone = (EditText)findViewById(R.id.et_phone);
         phone = (EditText)findViewById(R.id.et_phone);
         location = (EditText)findViewById(R.id.et_location);
-        email = (EditText)findViewById(R.id.et_email);
 
         isDonar = (CheckBox)findViewById(R.id.cb_donar);
 
