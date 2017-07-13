@@ -5,5 +5,7 @@
     <string name="ok_msg">Ok</string>
     <string name="no_network">The Internet connection appears to be offline</string>
     <string name="unexpected_error">Unexpected Error happened\\nPlease try again later</string>
+    <string name="succes_user_added">user added successfully</string>
+    <string name="user_already_exists">This User is already registered with this email id</string>
 
 </resources>

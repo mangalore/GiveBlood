@@ -1,11 +1,11 @@
 package com.example.ananya.giveblood.service.impl;
 
-import android.util.Base64;
-
 import com.android.volley.AuthFailureError;
 import com.android.volley.Response;
 import com.android.volley.toolbox.StringRequest;
 import com.example.ananya.giveblood.util.Utility;
+
+import org.apache.commons.codec.binary.Base64;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -29,7 +29,7 @@ public class VolleyStringRequest extends StringRequest {
 
     private String getAuthString() {
         String authStr = String.format("%s:%s", Utility.USERNAME_VALUE, Utility.PASSWORD_VALUE);
-        byte[] authData = Base64.encode(authStr.getBytes(), 1);
+        byte[] authData = Base64.encodeBase64(authStr.getBytes());
         String authString = new String(authData);
         return String.format("Basic %s", authString);
     }

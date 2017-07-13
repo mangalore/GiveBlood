@@ -1,19 +1,25 @@
 package com.example.ananya.giveblood.util;
 
 
+import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.os.IBinder;
 import android.support.v7.app.AlertDialog;
 import android.text.SpannableString;
 import android.text.method.LinkMovementMethod;
 import android.text.util.Linkify;
+import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.TextView;
 
 import com.example.ananya.giveblood.R;
 import com.example.ananya.giveblood.service.handler.AlertDialogHandler;
 
 import java.util.regex.Pattern;
+
+import static android.content.Context.INPUT_METHOD_SERVICE;
 
 public final class Utility {
 
@@ -48,6 +54,32 @@ public final class Utility {
     public static void hideProgressDialog() {
         if (mProgressDialog != null && mProgressDialog.isShowing()) {
             mProgressDialog.dismiss();
+        }
+    }
+
+    //HIDE KEYBOARD
+    public static void hideKeyBoard(Activity activity) {
+        InputMethodManager inputMethodManager = (InputMethodManager) activity
+                .getSystemService(INPUT_METHOD_SERVICE);
+        View currentFocus = activity.getCurrentFocus();
+        if (currentFocus != null) {
+            IBinder windowToken = activity.getCurrentFocus().getWindowToken();
+            if (windowToken != null) {
+                inputMethodManager.hideSoftInputFromWindow(windowToken, 0);
+            }
+        }
+    }
+
+    //SHOW KEYBOARD
+    public static void showKeyBoard(Activity activity) {
+        InputMethodManager inputMethodManager = (InputMethodManager) activity
+                .getSystemService(INPUT_METHOD_SERVICE);
+        View currentFocus = activity.getCurrentFocus();
+        if (currentFocus != null) {
+            IBinder windowToken = activity.getCurrentFocus().getWindowToken();
+            if (windowToken != null) {
+                inputMethodManager.toggleSoftInput(InputMethodManager.SHOW_FORCED, 0);
+            }
         }
     }
 
@@ -162,7 +194,7 @@ public final class Utility {
 
     //UNEXPECTED ERROR
     public static void showUnexpectedError(final Context context) {
-        showAlertDialog(context,null, context.getString(R.string.unexpected_error), false, context.getString(R.string.ok_msg), null, new AlertDialogHandler() {
+        showAlertDialog(context, null, context.getString(R.string.unexpected_error), false, context.getString(R.string.ok_msg), null, new AlertDialogHandler() {
 
             @Override
             public void onPositiveButtonClicked() {
@@ -184,7 +216,7 @@ public final class Utility {
 
 
     // SHOW PROGRESS BAR
-    public void showProgressDialog(Context context) {
+    public static void showProgressDialog(Context context) {
         hideProgressDialog();
 
         mProgressDialog = new ProgressDialog(context);
@@ -192,5 +224,14 @@ public final class Utility {
         mProgressDialog.setCancelable(false);
         mProgressDialog.setIndeterminate(true);
         mProgressDialog.show();
+    }
+
+    // EMPTY AND NULL CHECK
+    public static boolean emptyAndNullCheck(String stringVal) {
+        if (!stringVal.equals(null) && !stringVal.isEmpty()) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }

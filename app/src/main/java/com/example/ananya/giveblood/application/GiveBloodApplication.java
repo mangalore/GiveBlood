@@ -22,7 +22,6 @@ public class GiveBloodApplication extends MultiDexApplication {
     public void onCreate() {
         super.onCreate();
 
-//        Fabric.with(this, new Crashlytics());
         GiveBloodApplication.context = getApplicationContext();
 
         // set uncaught exception handler
@@ -38,17 +37,4 @@ public class GiveBloodApplication extends MultiDexApplication {
             }
         });
     }
-
-//    /**
-//     * Add bindings in configure() to manually configure RoboGuice.
-//     */
-//    public static class BindingsModule extends AbstractModule {
-//        /**
-//         * {@inheritDoc}
-//         */
-//        @Override
-//        protected void configure() {
-//            return;
-//        }
-//    }
 }
