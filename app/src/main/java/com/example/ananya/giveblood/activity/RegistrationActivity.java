@@ -3,6 +3,8 @@ package com.example.ananya.giveblood.activity;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -39,7 +41,7 @@ import java.util.Map;
  * Created by Ananya on 31-10-2016.
  */
 
-public class RegistrationActivity extends AppCompatActivity {
+public class RegistrationActivity extends AppCompatActivity implements TextWatcher {
 
     private EditText name, email, password, phone, location;
     private CheckBox isDonar;
@@ -120,32 +122,26 @@ public class RegistrationActivity extends AppCompatActivity {
 
         // By default, All button is disabled, and the color will be grey,
         // Once user enters all the fields, then enable it
-//        disableOrEnableSubmitButton();
+        addListeners();
     }
 
-    private void disableOrEnableSubmitButton() {
-
-        if (Utility.emptyAndNullCheck(nameFromEditText) && Utility.emptyAndNullCheck(emailFromEditText)
-                && Utility.emptyAndNullCheck(passwordFromEditText) && Utility.emptyAndNullCheck(phoneFromEitText) && Utility.emptyAndNullCheck(locationFromEditText)) {
-            // Enable the submit Button
-            submit.setEnabled(true);
-            submit.setTextColor(Color.BLACK);
-        } else {
-            submit.setEnabled(false);
-            submit.setTextColor(Color.DKGRAY);
-        }
+    private void addListeners() {
+        name.addTextChangedListener(this);
+        email.addTextChangedListener(this);
+        password.addTextChangedListener(this);
+        phone.addTextChangedListener(this);
+        location.addTextChangedListener(this);
     }
-
 
     // Store value in the db
     private void saveUserDetails() {
 
         //Get selected values fro editText/CheckBox/Spinner
-        nameFromEditText = name.getText().toString();
-        emailFromEditText = email.getText().toString();
-        passwordFromEditText = password.getText().toString();
-        phoneFromEitText = phone.getText().toString();
-        locationFromEditText = location.getText().toString();
+        nameFromEditText = name.getText().toString().trim();
+        emailFromEditText = email.getText().toString().trim();
+        passwordFromEditText = password.getText().toString().trim();
+        phoneFromEitText = phone.getText().toString().trim();
+        locationFromEditText = location.getText().toString().trim();
 
         userEntity = new UserEntity();
 
@@ -235,6 +231,38 @@ public class RegistrationActivity extends AppCompatActivity {
         VolleyStringRequest request = new VolleyStringRequest(Request.Method.GET,
                 URLHelper.getQeryEndpoint(Utility.USER_TABLE, map, null), userHandler, userHandler);
         VolleyUtils.getVolleyUtils(GiveBloodApplication.getContext()).addToRequestQueue(request);
+    }
+
+    @Override
+    public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+    }
+
+    @Override
+    public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+    }
+
+    @Override
+    public void afterTextChanged(Editable editable) {
+
+        //Get selected values fro editText/CheckBox/Spinner
+        nameFromEditText = name.getText().toString().trim();
+        emailFromEditText = email.getText().toString().trim();
+        passwordFromEditText = password.getText().toString().trim();
+        phoneFromEitText = phone.getText().toString().trim();
+        locationFromEditText = location.getText().toString().trim();
+
+        if (Utility.emptyAndNullCheck(nameFromEditText) && Utility.emptyAndNullCheck(emailFromEditText)
+                && Utility.emptyAndNullCheck(passwordFromEditText) && Utility.emptyAndNullCheck(phoneFromEitText) && Utility.emptyAndNullCheck(locationFromEditText)) {
+            // Enable the submit Button
+            submit.setEnabled(true);
+            submit.setTextColor(Color.BLACK);
+        } else {
+            submit.setEnabled(false);
+            submit.setTextColor(Color.DKGRAY);
+        }
+
     }
 
     // Save User handler
