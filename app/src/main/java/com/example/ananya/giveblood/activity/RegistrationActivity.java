@@ -196,6 +196,8 @@ public class RegistrationActivity extends AppCompatActivity implements TextWatch
         Utility.showAlertDialog(this, getString(R.string.app_name), getString(R.string.succes_user_added), false, getString(R.string.ok_msg), null, new AlertDialogHandler() {
             @Override
             public void onPositiveButtonClicked() {
+                // Come back to Login Activity
+                finish();
             }
 
             @Override
@@ -260,7 +262,7 @@ public class RegistrationActivity extends AppCompatActivity implements TextWatch
             submit.setTextColor(Color.BLACK);
         } else {
             submit.setEnabled(false);
-            submit.setTextColor(Color.DKGRAY);
+            submit.setTextColor(Color.GRAY);
         }
 
     }
