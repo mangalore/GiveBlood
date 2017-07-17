@@ -7,5 +7,12 @@
     <string name="unexpected_error">Unexpected Error happened\\nPlease try again later</string>
     <string name="succes_user_added">user added successfully</string>
     <string name="user_already_exists">This User is already registered with this email id</string>
+    <string name="valid_email_message">Please enter valid email id!!</string>
+    <string name="login_empty_error_message">Please enter username and password</string>
+    <string name="invalid_login_parameters">Please enter valid username or password</string>
+    <string name="about_us">About Us</string>
+    <string name="registration">REGISTRATION</string>
+    <string name="registration_title">Registration</string>
+    <string name="user_profile">Profile</string>
 
 </resources>

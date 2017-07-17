@@ -44,6 +44,7 @@ public final class Utility {
     public static final String LOCATION = "location";
     public static final String EMAIL = "email";
     public static final String IS_DONAR = "isDonar";
+    public static final String EMPTY_STRING = "";
 
     // Related to Methods
     private static ProgressDialog mProgressDialog;
@@ -235,13 +236,14 @@ public final class Utility {
         }
     }
 
-
     // EMAIL VALIDATION
-    public final static boolean isValidEmail(CharSequence target) {
-        if (target == null) {
-            return false;
-        } else {
-            return android.util.Patterns.EMAIL_ADDRESS.matcher(target).matches();
-        }
+    public final static boolean isValidEmail(String email) {
+        return Pattern.compile("^(([\\w-]+\\.)+[\\w-]+|([a-zA-Z]{1}|[\\w-]{2,}))@"
+                + "((([0-1]?[0-9]{1,2}|25[0-5]|2[0-4][0-9])\\.([0-1]?"
+                + "[0-9]{1,2}|25[0-5]|2[0-4][0-9])\\."
+                + "([0-1]?[0-9]{1,2}|25[0-5]|2[0-4][0-9])\\.([0-1]?"
+                + "[0-9]{1,2}|25[0-5]|2[0-4][0-9])){1}|"
+                + "([a-zA-Z]+[\\w-]+\\.)+[a-zA-Z]{2,4})$").matcher(email).matches();
     }
+
 }

@@ -34,7 +34,7 @@
                         android:layout_height="wrap_content"
                         android:gravity="center"
                         android:paddingTop="10dp"
-                        android:text="REGISTRATION"
+                        android:text="@string/registration"
                         android:textColor="@android:color/black"
                         android:textSize="20sp"
                         android:textStyle="bold" />

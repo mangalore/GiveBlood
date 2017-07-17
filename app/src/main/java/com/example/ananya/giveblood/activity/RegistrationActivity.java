@@ -2,9 +2,11 @@ package com.example.ananya.giveblood.activity;
 
 import android.graphics.Color;
 import android.os.Bundle;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -13,6 +15,7 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.android.volley.NetworkError;
 import com.android.volley.NoConnectionError;
@@ -115,10 +118,22 @@ public class RegistrationActivity extends AppCompatActivity implements TextWatch
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                emailFromEditText = email.getText().toString().trim();
                 // Save the Details in the Kinvey, Check weather user already exists
-                saveUserDetails();
+                if (Utility.isValidEmail(emailFromEditText)) {
+                    saveUserDetails();
+                } else {
+                    Toast.makeText(getApplicationContext(), getResources().getString(R.string.valid_email_message), Toast.LENGTH_LONG).show();
+                }
+
             }
         });
+
+        // Add Title
+        setTitle(getString(R.string.registration_title));
+
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
 
         // By default, All button is disabled, and the color will be grey,
         // Once user enters all the fields, then enable it
@@ -170,7 +185,7 @@ public class RegistrationActivity extends AppCompatActivity implements TextWatch
     }
 
     // Alert dialogue if User is already registered
-    private void showDeviceAlreadyRegistered(UserEntity duplicateUserEntity) {
+    private void showDeviceAlreadyRegistered() {
         Utility.hideProgressDialog();
         Utility.showAlertDialog(this, getString(R.string.app_name), getString(R.string.user_already_exists), false, getString(R.string.ok_msg), null, new AlertDialogHandler() {
             @Override
@@ -264,7 +279,20 @@ public class RegistrationActivity extends AppCompatActivity implements TextWatch
             submit.setEnabled(false);
             submit.setTextColor(Color.GRAY);
         }
+    }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                this.finish();
+                break;
+
+            default:
+                return super.onOptionsItemSelected(item);
+
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     // Save User handler
@@ -321,7 +349,7 @@ public class RegistrationActivity extends AppCompatActivity implements TextWatch
                     saveUser(userEntity, new SaveUserHandler());
                 } else {
                     // User is already Registered
-                    showDeviceAlreadyRegistered(temp);
+                    showDeviceAlreadyRegistered();
                 }
             }
         }
