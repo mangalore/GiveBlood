@@ -35,6 +35,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingLeft="10dp"
+            android:autoLink="email"
             android:paddingTop="5dp"
             android:text="arch@gmail.com"
             android:textSize="16dip" />
@@ -44,12 +45,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingLeft="10dp"
+            android:autoLink="phone"
             android:paddingTop="5dp"
             android:text="322323233"
             android:textSize="16dip" />
 
         <android.support.v7.widget.AppCompatButton
-            android:id="@+id/bt_login"
+            android:id="@+id/bt_edit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"

@@ -45,6 +45,7 @@ public final class Utility {
     public static final String EMAIL = "email";
     public static final String IS_DONAR = "isDonar";
     public static final String EMPTY_STRING = "";
+    public static final String USER_ENTITY = "USER_ENTITY";
 
     // Related to Methods
     private static ProgressDialog mProgressDialog;

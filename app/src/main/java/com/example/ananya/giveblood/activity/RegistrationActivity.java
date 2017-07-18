@@ -57,6 +57,8 @@ public class RegistrationActivity extends AppCompatActivity implements TextWatch
 
     private UserEntity userEntity;
 
+    private UserEntity userEntityFromBundle;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -118,14 +120,20 @@ public class RegistrationActivity extends AppCompatActivity implements TextWatch
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                emailFromEditText = email.getText().toString().trim();
-                // Save the Details in the Kinvey, Check weather user already exists
-                if (Utility.isValidEmail(emailFromEditText)) {
-                    saveUserDetails();
-                } else {
-                    Toast.makeText(getApplicationContext(), getResources().getString(R.string.valid_email_message), Toast.LENGTH_LONG).show();
+                // If Edit Mode
+                if (userEntityFromBundle != null) {
+                    //
                 }
-
+                // Normal mode
+                else {
+                    emailFromEditText = email.getText().toString().trim();
+                    // Save the Details in the Kinvey, Check weather user already exists
+                    if (Utility.isValidEmail(emailFromEditText)) {
+                        saveUserDetails();
+                    } else {
+                        Toast.makeText(getApplicationContext(), getResources().getString(R.string.valid_email_message), Toast.LENGTH_LONG).show();
+                    }
+                }
             }
         });
 
@@ -138,6 +146,25 @@ public class RegistrationActivity extends AppCompatActivity implements TextWatch
         // By default, All button is disabled, and the color will be grey,
         // Once user enters all the fields, then enable it
         addListeners();
+
+        // Get UserEntity from previous class
+        userEntityFromBundle = (UserEntity) getIntent().getSerializableExtra(Utility.USER_ENTITY);
+
+        // Prepopulate the values
+        if (userEntityFromBundle != null) {
+            name.setText(userEntityFromBundle.getUserName());
+            email.setText(userEntityFromBundle.getEmail());
+            password.setText(userEntityFromBundle.getPassword());
+            phone.setText(userEntityFromBundle.getPhoneNumber());
+            location.setText(userEntityFromBundle.getLocation());
+
+            bloodGroup.set(0, userEntityFromBundle.getBloodGroup());
+            if (userEntityFromBundle.getIsDonar().equals("true")) {
+                isDonar.setChecked(true);
+            } else {
+                isDonar.setChecked(false);
+            }
+        }
     }
 
     private void addListeners() {

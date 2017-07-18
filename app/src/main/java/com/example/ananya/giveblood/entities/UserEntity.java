@@ -2,11 +2,13 @@ package com.example.ananya.giveblood.entities;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
+
 /**
  * Created by akokala on 5/23/2017.
  */
 
-public class UserEntity extends BaseEntity {
+public class UserEntity extends BaseEntity implements Serializable {
     @SerializedName("_id")
     private String objectId;
 

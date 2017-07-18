@@ -164,6 +164,7 @@ public class LoginActivity extends AppCompatActivity {
                 if (userEntity.getPassword().equals(passwordValue)) {
                     // Successful Logged in, Open UserLanding Screen
                     Intent intent = new Intent(LoginActivity.this, UserLandingActivity.class);
+                    intent.putExtra(Utility.USER_ENTITY,userEntity);
                     LoginActivity.this.startActivity(intent);
                     // Clear the fields
                     userName.setText("");
